@@ -1,0 +1,105 @@
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #fafafa;
+  color: #212121;
+  line-height: 1.5;
+  margin: 0;
+}
+img {
+  width: 100%;
+}
+.input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color:#1f1f88;
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 0px solid;
+  padding: 15px;
+}
+
+.is-hidden {
+  visibility: hidden;
+}
+
+.input-item {
+  padding: 8px;
+  border: 0px solid;
+  width: 300px;
+}
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+stroke-width: 0;
+} 
+.search-btn {
+  cursor: pointer;
+
+  border: 0px solid;
+  padding: 5px;
+}
+.gallery {
+  padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -50px;
+    margin-bottom: -20px;
+    
+}
+.gallery:nth-child(n+2) {
+  margin-left: 20px;
+}
+.card {
+  width: calc(100% / 3 - 60px);
+  margin-right: 50px;
+  margin-bottom: 30px;
+  border: 1px solid #7e7c7c;
+}
+.link {
+  display: flex;
+  flex-wrap: wrap;
+}
+.photo-card {
+  padding: 10px;
+}
+.image {
+  display: block;
+}
+.card-info {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.info-item {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 18px;
+  padding: 10px;
+  color: black;
+}
+.count {
+  display: flex;
+  justify-content: center;
+}
+
+.load-more {
+  background-color: #1f1f88;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 16px;
+  height: 50px;
+  display:block;
+  position: relative;
+  margin:0 auto;
+}
