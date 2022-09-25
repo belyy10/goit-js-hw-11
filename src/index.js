@@ -5,7 +5,6 @@ import apiFetch from "./js/fetch.js";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-
 const refs = {
     searchEl: document.querySelector('#search-form'),
     galleryEl: document.querySelector('.gallery'),
@@ -16,20 +15,22 @@ refs.searchEl.addEventListener('submit',onSearch)
 refs.loadMore.addEventListener ('click', onloadMore)
 
 const fetchPhoto = new apiFetch ()
+const gallery = new SimpleLightbox ('gallary a', {})
 
 function onSearch (e) {
   e.preventDefault()
-  refs.loadMore.classList.remove ('is-hidden')
+  
   refs.galleryEl.innerHTML = ''
   fetchPhoto.query = e.currentTarget.elements.searchQuery.value.trim()
   fetchPhoto.resetPage()
-  if(fetchPhoto===''){
+  if(fetchPhoto.query===''){
     refs.loadMore.classList.add ('is-hidden')
     return Notify.info ('Enter your query')
   }
   refs.searchEl.reset()
   fetchPhoto.fetchApi().then(res => {
     getResponse(res)
+    refs.loadMore.classList.remove ('is-hidden')
       if (fetchPhoto.totalPages <=1) {
         refs.loadMore.classList.add ('is-hidden')
       }
@@ -39,16 +40,18 @@ function onSearch (e) {
   })
 }
 function onloadMore () {
-  if (fetchPhoto.page > fetchPhoto.totalPages) {
+  fetchPhoto.fetchApi()
+  .then (res => {
+    getResponse(res)
+  })
+  .catch (e => {
+    Notify.failure ('Error Load More')
+  })
+  if(fetchPhoto.totalHits !== 0 && fetchPhoto.page > fetchPhoto.totalPages) {
     refs.loadMore.classList.add ('is-hidden')
     Notify.info ("We're sorry, but you've reached the end of search results.")
     return
   }
-  fetchPhoto.fetchApi ().then (res => {
-    getResponse(res)
-  }).catch (e => {
-    Notify.failure ('error Load More')
-  })
 }
 
 function renderCard (hits) {
